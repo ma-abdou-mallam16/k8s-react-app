@@ -1,1 +1,19 @@
-# Create your inress here 
+# Create your inress here
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata: 
+  name: kubernetes-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service:
+            name: kubernetes-svc
+            port:
+              number: 31111

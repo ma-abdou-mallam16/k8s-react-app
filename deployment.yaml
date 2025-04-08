@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: kubernetes-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       project: kubernetes-project
@@ -11,9 +12,10 @@ spec:
       labels:
         project: kubernetes-project
     spec: 
+      restartPolicy: Always
       containers:
       - name: kubernetes-pod
         imagePullPolicy: Always
         ports:
         - containerPort: 31111
-        image: # Write your image name here
+        image: aminou12345/k8s-react-app

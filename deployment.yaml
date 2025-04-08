@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-deployment
+spec:
+  selector:
+    matchLabels:
+      project: kubernetes-project
+  template:
+    metadata:
+      labels:
+        project: kubernetes-project
+    spec: 
+      containers:
+      - name: kubernetes-pod
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 31111
+        image: # Write your image name here
